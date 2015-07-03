@@ -1,0 +1,31 @@
+# -*- snakemake -*-
+
+import os
+
+from snakemakelib.config import update_snakemake_config
+from snakemakelib.stat import is_compresed, is_installed
+
+include: '../settings.rules'
+
+config_default = {
+    'bio.ngs.clustering.segway' : {
+            'train' : {},
+                'options' : ''
+            'identify' : {},
+                'options' : ''
+            'layer' : {},
+                'options' : ''
+    'options' : '--num-instances=1'
+    }
+}
+
+config = update_snakemake_config(config, config_default)
+
+segway_cfg = config['bio.ngs.clustering.segway']
+
+rule segway_train:
+    """Segway training"""
+    params: cmd = 
+    input:
+    output:
+    log:

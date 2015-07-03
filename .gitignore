@@ -24,3 +24,5 @@ Snakefile
 *.bed
 .noseids
 _build
+__pycache__
+*.pyc

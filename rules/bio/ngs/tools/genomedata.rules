@@ -1,0 +1,28 @@
+# -*- snakemake -*-
+
+import os
+
+from snakemakelib.config import update_snakemake_config
+
+include: '../settings.rules'
+
+config_default = {
+    'bio.ngs.tools.genomedata' : {
+            'load' : {},
+                'cmd' : 'genomedata load',
+                'options' : '',
+            'info' : {},
+                'options' : '',
+    }
+}
+
+config = update_snakemake_config(config, config_default)
+
+gdload_cfg = config['bio.ngs.tools.genomedata']['load']
+
+rule genomedata_load:
+    """Load track information into a genomedata archive"""
+    #params: cmd = 
+    input: 'analysis/{paradigm}/bedgraphs/{sample}/'
+    output: 'analysis/{paradigm}/{sample}.genomedata/'
+    log:
